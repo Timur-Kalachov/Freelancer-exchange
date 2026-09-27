@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Authorisation</title>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: #fff;
+	font-family: Arial, sans-serif;
+	color: #222;
+}
+
+/* LOGIN */
+
+.login-container {
+	width: 420px;
+	margin: 80px auto;
+	padding: 28px 30px;
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 2px 10px #ccc;
+}
+
+/* LOGO */
+
+.logo {
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+/* TITLE */
+
+.login-title {
+	margin-bottom: 22px;
+	font-size: 21px;
+	font-weight: bold;
+}
+
+/* FORM */
+
+.form-group {
+	margin-bottom: 16px;
+}
+
+.form-label {
+	display: block;
+	margin-bottom: 7px;
+	font-size: 14px;
+	color: #555;
+}
+
+.form-input,
+.form-search {
+	width: 100%;
+	padding: 10px 12px;
+	background: #f8f8f8;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+	outline: none;
+}
+
+.form-input:focus,
+.form-search:focus {
+	border-color: #8bc58b;
+	background: #fff;
+}
+
+/* ERROR */
+
+.error {
+	display: block;
+	margin-top: 7px;
+	color: #d33;
+	font-size: 13px;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn {
+	width: 100%;
+	margin-top: 8px;
+	padding: 11px;
+	background: #b9e8b9;
+	border: 1px solid #8bc58b;
+	border-radius: 8px;
+	color: #205520;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.login-btn:hover {
+	background: #a8dca8;
+}
+
+/* REGISTER */
+
+.helper-link {
+	margin-top: 15px;
+	text-align: right;
+	color: #666;
+	font-size: 14px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.helper-link:hover {
+	color: #222;
+}
+</style>
+</head>
+<body>
+	<div class="login-container">
+		<div class="logo" th:text="#{freelancer.exchange}"></div>
+
+		<div class="login-title" th:text="#{authorisation.title}"></div>
+
+		<form action="/login" method="post">
+			<div class="form-group">
+				<label class="form-label" for="name"
+					th:text="#{authorisation.email}"></label>
+
+				<input class="form-input" type="text" id="email" name="email"
+					required>
+			</div>
+
+			<div class="form-group">
+				<label class="form-label" for="password"
+					th:text="#{authorisation.password}"></label>
+
+				<input class="form-input" type="password" id="password"
+					name="password" required>
+				<label class="error" th:text="${errorMessage}"></label>
+			</div>
+			
+
+			<div class="form-group">
+				<label class="form-label" for="role"
+					th:text="#{authorisation.role}"></label>
+
+				<select class="form-search" id="role" name="role" required>
+					<option value="" th:text="#{authorisation.search.role}"></option>
+
+					<option value="CLIENT"
+						th:text="#{authorisation.client}"></option>
+
+					<option value="FREELANCER"
+						th:text="#{authorisation.freelancer}"></option>
+				</select>
+			</div>
+
+			<button class="login-btn" type="submit"
+				th:text="#{authorisation.login}"></button>
+
+			<div class="helper-link" onclick="location.href='/register'"
+				th:text="#{authorisation.no.account}"></div>
+		</form>
+	</div>
+</body>
+</html>

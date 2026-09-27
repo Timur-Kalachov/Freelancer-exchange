@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Create offer</title>
+<link rel="stylesheet" th:href="@{/css/common.css}">
+<style>
+ 
+.container select {
+	height: 35px;
+	margin-top: 6px;
+	padding: 8px 12px;
+	background: #fff;
+	border: 1px solid #888;
+	border-radius: 8px;
+}
+
+.top-bar {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	margin-bottom: 20px;
+}
+
+.back-btn {
+	padding: 9px 14px;
+	border: 1px solid #888;
+	border-radius: 8px;
+	background: #e0e0e0;
+	color: #303030;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.back-btn:hover {
+	background: #d2d2d2;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+label {
+	display: block;
+	margin-top: 16px;
+	margin-bottom: 6px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+input,
+search,
+textarea {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #888;
+	border-radius: 8px;
+	background: #ffffff;
+	color: #303030;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+
+input:focus,
+search:focus,
+textarea:focus {
+	outline: none;
+	border-color: #5c9f60;
+}
+
+search {
+	cursor: pointer;
+}
+
+textarea {
+	min-height: 120px;
+	resize: vertical;
+}
+
+.save-btn {
+	display: block;
+	width: 100%;
+	margin-top: 25px;
+	padding: 11px;
+	box-sizing: border-box;
+	background: #b8e8b8;
+	border: 1px solid #5c9f60;
+	border-radius: 8px;
+	color: #245b28;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.save-btn:hover {
+	background: #a8dca8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container order-container">
+
+    <div class="top-bar">
+    <div class="back-btn" onclick="history.back()" th:text="#{create.order.back}">←</div>
+    <div class="title" th:text="#{create.order.title}"></div>
+</div>
+
+<form action="/createOrder" method="post">
+
+	<label th:text="#{create.order.name}"></label>
+
+	<input required type="text"
+		   name="orderName"
+		   th:placeholder="#{create.order.name.placeholder}">
+
+	<label th:text="#{create.order.category}"></label>
+
+	<select required class="input" name="categoryId">
+		<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+	</select>
+
+	<label th:text="#{create.order.description}"></label>
+
+	<textarea required
+		name="description"
+		th:placeholder="#{create.order.description.placeholder}"></textarea>
+
+	<label th:text="#{create.order.budget}"></label>
+
+	<input required type="number"
+		   name="budget"
+		   th:placeholder="#{create.order.budget.placeholder}">
+
+	<label th:text="#{create.order.deadline}"></label>
+
+	<input required name="deadline" type="date">
+
+	<button type="submit"
+			class="save-btn"
+			th:text="#{create.order.create}"></button>
+
+</form>
+	
+   
+
+</div>
+
+</body>
+</html>

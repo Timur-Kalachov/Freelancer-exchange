@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+
+<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 25px 40px;
+	background: #eeeeee;
+	font-family: Arial, sans-serif;
+	color: #222;
+}
+
+/* TITLE */
+.fe-label {
+	display: block;
+	padding: 18px 24px;
+	margin-bottom: 20px;
+	background: #fff;
+	border-radius: 14px;
+	font-size: 28px;
+	font-weight: bold;
+	box-shadow: 0 2px 10px #ccc;
+}
+
+/* PANELS */
+.clients-panel, .freelancers-panel, .orders-panel {
+	max-height: 65vh;
+	overflow-y: auto;
+	padding-right: 5px;
+	margin-bottom: 20px;
+	padding: 20px;
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 2px 10px #ccc;
+}
+
+.clients-panel>label, .freelancers-panel>label, .orders-panel>label {
+	display: block;
+	margin-bottom: 15px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* CARDS */
+.client-card, .freelancer-card, .order-card {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-bottom: 10px;
+	padding: 13px 16px;
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.client-card:last-child, .freelancer-card:last-child, .order-card:last-child
+	{
+	margin-bottom: 0;
+}
+
+.client-card:hover, .freelancer-card:hover, .order-card:hover {
+	border-color: #aaa;
+}
+
+/* LINKS */
+.client-card a, .freelancer-card a, .order-card a {
+	color: #222;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.client-card a:hover, .freelancer-card a:hover, .order-card a:hover {
+	text-decoration: underline;
+}
+
+/* INFORMATION */
+.client-card span, .freelancer-card span, .order-card span {
+	color: #666;
+}
+</style>
+
+</head>
+
+<body>
+	<label class=fe-label>Freelance Exchange - admin panel</label>
+
+	<div class="clients-panel">
+		<label>Clients: </label>
+		<div th:each="client : ${clients}" class="client-card">
+			<a th:href="@{/client-profile/{id}(id=${client.id})} "
+				th:inline="text">[[${client.name}]]</a><span th:inline="text">email:[[${client.email}]]
+				</span>
+		</div>
+	</div>
+
+	<div class="freelancers-panel">
+		<label>Freelancers:</label>
+		<div th:each="freelancer : ${freelancers}" class="freelancer-card">
+			<a th:href="@{/freelancer-profile/{id}(id=${freelancer.id})} "
+				th:inline="text">[[${freelancer.name}]] </a><span th:inline="text">email:
+				[[${freelancer.email}]] </span>
+
+		</div>
+	</div>
+
+	<div class="orders-panel">
+		<label>Orders:</label>
+		<div th:each="order : ${orders}" class="order-card">
+			<a th:href="@{/order/{id}(id=${order.id})} " th:inline="text">[[${order.name}]]</a>
+			<span th:inline="text"> budget: [[${order.budget}]] deadline:
+				[[${order.deadline}]]</span>
+
+		</div>
+	</div>
+
+</body>
+</html>

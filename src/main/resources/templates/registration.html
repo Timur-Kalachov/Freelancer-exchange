@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+<link rel="stylesheet" th:href="@{/css/auth.css}">
+</head>
+<style>
+.register-container {
+	width: 420px;
+	margin: 80px auto;
+	padding: 28px 30px;
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 2px 10px #ccc;
+}
+</style>
+<body>
+
+	<div class="register-container">
+
+		<div class="logo" th:text="#{freelancer.exchange}"></div>
+
+		<div class="register-title" th:text="#{registration.title}"></div>
+
+		<form th:action="@{/register}" method="post">
+
+			<div class="form-group">
+				<label class="form-label" for="name" th:text="#{registration.name}">
+				</label>
+
+				<input class="form-input" type="text" id="name" name="name" required>
+			</div>
+
+			<div class="form-group">
+				<label class="form-label" for="email"
+					th:text="#{registration.email}"> </label>
+
+				<input class="form-input" type="email" id="email" name="email"
+					required>
+			</div>
+
+			<div class="form-group">
+				<label class="form-label" for="password"
+					th:text="#{registration.password}"> </label>
+
+				<input class="form-input" type="password" id="password"
+					name="password" required>
+				<label class="error" th:text="${session.errorMessage}"></label>
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="role" th:text="#{registration.role}">
+				</label>
+
+				<select class="form-search" id="role" name="role" required>
+
+					<option value="" th:text="#{registration.search.role}"></option>
+
+					<option value="CLIENT" th:text="#{registration.client}"></option>
+
+					<option value="FREELANCER" th:text="#{registration.freelancer}">
+					</option>
+
+				</select>
+			</div>
+
+			<button class="register-btn" type="submit"
+				th:text="#{registration.register}"></button>
+
+			<div class="helper-link" onclick="location.href='/login'"
+				th:text="#{registration.have.account}"></div>
+
+		</form>
+
+	</div>
+
+</body>
+</html>

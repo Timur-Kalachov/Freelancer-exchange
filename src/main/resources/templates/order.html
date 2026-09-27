@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Order Details</title>
+
+<link rel="stylesheet" th:href="@{/css/common.css}">
+
+</head>
+
+<body>
+
+	<div class="container order-container">
+
+		<div class="order-top-bar">
+
+			<h2 th:text="#{order.details.title}"></h2>
+			<button class="back-btn" onclick="history.back()"
+				th:text="#{order.back}"></button>
+		</div>
+
+		<div class="order-section">
+
+			<div class="section-title" th:text="#{order.title}"></div>
+
+			<div class="value-block" th:text="${order.name}"></div>
+
+		</div>
+		
+		<div class="order-section">
+
+			<div class="section-title" th:text="#{create.order.category}"></div>
+
+			<div class="value-block" th:text="${category.name}"></div>
+
+		</div>
+
+		<div class="order-section">
+
+			<div class="section-title" th:text="#{order.description}"></div>
+
+			<div class="value-block" th:text="${order.description}"></div>
+
+		</div>
+
+
+		<div class="order-section">
+
+			<div class="section-title" th:text="#{order.budget}"></div>
+
+			<div class="value-block">
+
+				<span th:text="${order.budget}"></span> <span
+					th:text="#{order.currency}"></span>
+
+			</div>
+
+		</div>
+
+
+		<div class="order-section">
+
+			<div class="section-title" th:text="#{order.deadline}"></div>
+
+			<div class="value-block" th:text="${order.deadline}"></div>
+
+		</div>
+
+
+		<div th:if="${role == 'CLIENT'}" class="order-actions">
+
+			<form th:action="@{/order/{id}/edit(id=${order.id})}" method="get">
+
+				<button type="submit" class="gray-btn" th:text="#{order.edit}">
+				</button>
+
+			</form>
+
+			<form th:action="@{/order/{id}/delete(id=${order.id})}" method="post">
+
+				<button type="submit" class="red-btn" th:text="#{order.delete}">
+				</button>
+
+			</form>
+
+
+		</div>
+
+
+		<div th:if="${role == 'FREELANCER'}" class="order-actions">
+
+			<button class="green-btn"
+				th:onclick="'location.href=\'/order/' + ${order.id} + '/apply\''"
+				th:text="#{order.apply}"></button>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

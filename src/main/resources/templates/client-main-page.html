@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Client main page</title>
+<link rel="stylesheet" th:href="@{/css/common.css}">
+
+</head>
+
+<body>
+	<div class="container">
+
+		<header>
+			<div class="logo" th:text="#{freelancer.exchange}"></div>
+
+			<div class="search-bar">
+				<input type="text" th:placeholder="#{search.placeholder}">
+			</div>
+
+			<div class="user-panel">
+				<a href="/createOrder">
+					<button class="green-btn"
+						th:text="#{client.main.page.create.order}"></button>
+				</a> 
+				<a th:href="@{/logout}" th:text="#{logout}" class="red-btn"></a>
+				<a th:href="@{/client-profile/{id}(id=${session.id})}"
+					class="user-link"> <span th:text="${userName}"></span>
+					<div class="avatar"></div>
+				</a>>
+			</div>
+		</header>
+
+		<div class="top-filters">
+			<label th:text="#{filters}"></label>
+			<select onChange="location.href='?filter=' + this.value">
+				<option th:text="#{sort.by.category}" ></option>
+				<option th:each="category : ${categories}" th:value="${category.id}"
+					th:text="${category.name}"></option>
+			</select>
+
+			<select onChange="location.href='?lang=' + this.value">
+				<option disabled selected value="en" th:text="#{language}"></option>
+				<option value="en">English</option>
+				<option value="ua">Українська</option>
+				<option value="de">Deutsch</option>
+			</select>
+			<a th:href="@{/client/applications}">
+				<button class="gray-btn" th:text="#{button.applications}"></button>
+			</a>
+
+		</div>
+
+		<div class="layout">
+			<div class="side-panel">
+
+				<div class="side-title" th:text="#{client.main.page.sort.settings}">
+
+				</div>
+				<select class="sort-btn" onChange="location.href='?sort=' + this.value">
+					<option selected disabled th:text="#{sort.budget}"></option>
+
+					<option th:text="#{sort.budget.up}"  th:value="budgetUp"></option>
+
+					<option th:text="#{sort.budget.down}"  th:value="budgetDown"></option>
+
+				</select>
+
+				<select class="sort-btn" onChange="location.href='?sort=' + this.value">
+					<option selected disabled th:text="#{sort.date}"></option>
+
+					<option th:text="#{sort.date.up}"  th:value="dateUp"></option>
+
+					<option th:text="#{sort.date.down}" th:value="dateDown"></option>
+
+				</select>
+
+			</div>
+
+			<div class="column">
+
+				<div class="column-title" th:text="#{client.main.page.my.orders}"></div>
+
+				<div class="project-cards">
+
+					<div th:each="order : ${order}" class="project-card">
+						<a th:href="@{/order/{id}(id=${order.id})}">
+							<div class="project-card-title" th:text="${order.name}"></div>
+
+							<div class="project-card-desc" th:text="${order.description}"></div>
+
+							<div class="project-card-budg"
+								th:text="#{client.main.page.my.orders.budget} + ${order.budget} + ' ' + #{currency}">
+							</div>
+
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+	</div>
+
+
+</body>
+</html>

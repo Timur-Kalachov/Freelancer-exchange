@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Application</title>
+
+<link rel="stylesheet" th:href="@{/css/common.css}">
+
+</head>
+
+<body>
+
+	<div class="container application-container">
+
+		<h2 th:text="#{freelancer.profile.title}"></h2>
+
+		<div class="application-profile">
+
+			<label th:text="#{freelancer.profile.name}"></label>
+			<input readonly type="text" id="name" th:value="${freelancer.name}">
+			<label th:text="#{freelancer.profile.experience}"></label>
+			<input readonly id="experience" th:value="${freelancer.experience}">
+			<label th:text="#{email}"></label>
+			<input readonly th:value="${freelancer.email}">
+			<label th:text="#{freelancer.profile.description}"></label>
+			<textarea readonly th:text="${freelancer.description}"
+				id="description"></textarea>
+
+			<label th:text="#{freelancer.profile.portfolio}"></label>
+			<textarea readonly th:text="${freelancer.portfolio}" id="portfolio"></textarea>
+
+		</div>
+
+		<div class="application-status">
+
+			<label th:text="#{application.status}"></label>
+			<label th:text="${appl.status}"></label>
+
+		</div>
+
+		<div class="order-description">
+
+			<div class="order-info-label" th:text="#{order.order}"></div>
+
+			<a th:href="@{/order/{id}(id=${order.id})}" th:text="${order.name}">
+			</a>
+
+		</div>
+
+		<div class="back-btn" onclick="history.back()">
+			<span th:text="#{freelancer.profile.back}"></span>
+		</div>
+
+		<form th:action="@{/accept-application/{id}(id=${appl.id})}"
+			th:if="${session.role == 'CLIENT'}" method="post">
+
+			<button class="green-btn" th:text="#{client.application.apply}"></button>
+
+		</form>
+
+		<form th:action="@{/reject-application/{id}(id=${appl.id})}"
+			th:if="${session.role == 'CLIENT'}" method="post">
+
+			<button class="red-btn" th:text="#{client.application.reject}"></button>
+
+		</form>
+
+		<form th:action="@{/delete-application/{id}(id=${appl.id})}"
+			th:if="${session.role == 'FREELANCER'}" method="post">
+
+			<button class="red-btn" th:text="#{freelancer.application.delete}"></button>
+
+		</form>
+
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Applications</title>
+<link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+
+<body>
+	<div class="container">
+
+		<header>
+			<div class="logo" th:text="#{freelancer.exchange}"></div>
+
+			<div class="search-bar">
+				<input type="text" th:placeholder="#{search.placeholder}">
+			</div>
+
+		</header>
+
+		<div class="top-filters">
+			<a th:href="@{/client-main-page}" th:if="${session.role == 'CLIENT'}"
+				th:text="#{freelancer.profile.back}" class="gray-btn"></a> <a
+				th:href="@{/freelancer-main-page}"
+				th:if="${session.role == 'FREELANCER'}"
+				th:text="#{freelancer.profile.back}" class="gray-btn"></a>
+			<select>
+				<option th:text="#{sort.by.experience}"></option>
+			</select>
+			<select>
+				<option selected disabled th:text="#{sort.by.category}"></option>
+				<option th:each="category : ${categories}" th:value="${categoryId}"
+					th:text="${category.name}"></option>
+			</select>
+	
+		</div>
+
+		<div class="layout">
+			<div class="side-panel">
+
+				<div class="side-title" th:text="#{client.main.page.sort.settings}">
+
+				</div>
+				<select class="sort-btn"
+					onChange="location.href='?sort=' + this.value">
+					<option selected disabled
+						th:text="#{client.main.page.sort.experience}"></option>
+
+					<option th:value="experienceUp"
+						th:text="#{client.main.page.sort.experience.up}"></option>
+
+					<option th:value="experienceDown"
+						th:text="#{client.main.page.sort.experience.down}"></option>
+
+				</select>
+				<select class="sort-btn"
+					onChange="location.href='?sort=' + this.value">
+					<option selected disabled th:text="#{client.main.page.sort.date}"></option>
+
+					<option th:value="dateUp"
+						th:text="#{client.main.page.sort.date.up}"></option>
+
+					<option th:value="dateDown"
+						th:text="#{client.main.page.sort.date.down}"></option>
+
+				</select>
+
+			</div>
+
+
+
+			<div class="column" th:if="${role == 'CLIENT'}">
+				<div class="column-title"
+					th:text="#{client.main.page.applications.on.orders}"></div>
+
+				<div class="project-cards">
+
+					<div th:each="appl : ${appls}" class="project-card">
+
+						<a th:href="@{/application/{id} (id=${appl.id})}"> <!-- Rename project-card-... into  card-...  -->
+
+							<div class="project-card-title"
+								th:text="${freelancers[appl.freelancerId].name}"></div>
+
+							<div class="project-card-desc"
+								th:text="${freelancers[appl.freelancerId].description}"></div>
+
+							<div class="project-card-desc"
+								th:text="${freelancers[appl.freelancerId].experience} + ' ' + #{years}"></div>
+
+							<div class="application-status">
+								<label th:text="#{application.status}"></label>
+								<label th:text="${appl.status}"></label>
+							</div>
+
+						</a>
+
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="column" th:if="${role == 'FREELANCER'}">
+				<div class="column-title" th:text="#{freelancer.applications.title}"></div>
+
+				<div class="project-cards">
+
+					<div th:each="appl : ${appls}" class="project-card">
+
+						<a th:href="@{/application/{id} (id=${appl.id})}"> <!-- Rename project-card-... into  card-...  -->
+
+							<div class="project-card-title"
+								th:text="${orders[appl.orderId].name}"></div>
+
+							<div class="project-card-desc"
+								th:text="${orders[appl.orderId].description}"></div>
+
+							<div class="project-card-desc"
+								th:text="${orders[appl.orderId].budget} "></div>
+
+							<div class="application-status">
+								<label th:text="#{application.status}"></label>
+								<label th:text="${appl.status}"></label>
+							</div>
+
+						</a>
+
+
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+
+	</div>
+
+
+</body>
+</html>

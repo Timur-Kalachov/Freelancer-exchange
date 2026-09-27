@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Freelancer main page</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/common.css}">
+
+</head>
+<body>
+	<div class="container">
+
+		<header>
+			<div class="logo" th:text="#{freelancer.main.logo}"></div>
+
+			<div class="search-bar">
+				<input type="text"
+					th:placeholder="#{freelancer.main.search.placeholder}">
+			</div>
+
+			<div class="user-panel">
+				<a th:href="@{/logout}" class="red-btn" th:text="#{logout}"></a> <a
+					th:href="@{/freelancer-profile/{id}(id=${session.id})}"
+					class="user-link"> <span th:text="${userName}"></span>
+					<div class="avatar"></div>
+				</a>>
+
+			</div>
+
+		</header>
+
+		<div class="top-filters">
+
+			<label th:text="#{filters}"></label>
+
+			<select>
+				<option th:text="#{filter.budget}"></option>
+			</select>
+
+			<select>
+				<option th:text="#{sort.by.category}"></option>
+				<option th:each="category : ${categories}" th:value="${category.id}"
+					th:text="${category.name}"></option>
+			</select>
+
+			<select>
+				<option th:text="#{filter.date}"></option>
+			</select>
+			<select onChange="location.href='?lang=' + this.value">
+				<option disabled selected value="en" th:text="#{language}"></option>
+				<option value="en">English</option>
+				<option value="ua">Українська</option>
+				<option value="de">Deutsch</option>
+			</select>
+			<a th:href="@{/freelancer/applications}">
+				<button class="gray-btn" th:text="#{button.applications}"></button>
+			</a>
+		</div>
+
+
+		<div class="layout">
+
+			<div class="side-panel">
+
+				<h3 th:text="#{freelancer.main.sort.parameters}"></h3>
+
+				<select class="sort-btn"
+					onChange="location.href='?sort=' + this.value">
+					<option selected disabled th:text="#{sort.budget}"></option>
+
+					<option th:text="#{sort.budget.up}" th:value="budgetUp"></option>
+
+					<option th:text="#{sort.budget.down}" th:value="budgetDown"></option>
+
+				</select>
+
+				<select class="sort-btn"
+					onChange="location.href='?sort=' + this.value">
+					<option selected disabled th:text="#{sort.date}"></option>
+
+					<option th:text="#{sort.date.up}" th:value="dateUp"></option>
+
+					<option th:text="#{sort.date.down}" th:value="dateDown"></option>
+
+				</select>
+
+			</div>
+			<div class="column">
+
+				<div class="column-title" th:text="#{freelancer.main.page.orders}"></div>
+				<div class="project-cards">
+					<div th:each="order : ${orders}" class="project-card">
+						<a th:href="@{/order/{id}(id=${order.id})}">
+
+							<div class="project-card-title" th:text="${order.name}"></div>
+
+							<div class="project-card-budget"
+								th:text="${order.budget }+ ' ' + #{currency}"></div>
+
+
+							<div class="project-card-desc" th:text="${order.description}"></div>
+
+						</a>
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+</body>
+</html>

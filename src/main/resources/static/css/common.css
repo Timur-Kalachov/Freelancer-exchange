@@ -1,0 +1,574 @@
+/* =========================
+   Base
+   ========================= */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: #eeeeee;
+	font-family: Arial, sans-serif;
+	color: #222;
+}
+
+/* =========================
+   Main container
+   ========================= */
+.container {
+	/* 	margin: 25px 40px;
+	background: #fff;
+	border-radius: 14px;
+	min-height: 90vh;
+	overflow: hidden;
+	box-shadow: 0 2px 10px #ccc; */
+	margin: 25px 40px;
+	background: #fff;
+	border-radius: 14px;
+	min-height: 90vh;
+	overflow: hidden;
+	box-shadow: 0 2px 10px #ccc;
+	display: flex;
+	flex-direction: column;
+}
+
+/* =========================
+   Header
+   ========================= */
+header {
+	display: flex;
+	align-items: center;
+	gap: 25px;
+	padding: 18px 25px;
+	border-bottom: 1px solid #ddd;
+}
+
+.logo {
+	font-size: 25px;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.search-bar {
+	flex: 1;
+}
+
+.search-bar input {
+	width: 100%;
+	padding: 11px 16px;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	font-size: 15px;
+	outline: none;
+}
+
+.search-bar input:focus {
+	border-color: #888;
+}
+
+.user-panel {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.user-link {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: #222;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.avatar {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	background: #ddd;
+	border: 1px solid #bbb;
+}
+
+/* =========================
+   Top filters
+   ========================= */
+.top-filters {
+	display: flex;
+	gap: 10px;
+	padding: 15px 20px;
+	align-items: center;
+	border-bottom: 1px solid #ddd;
+}
+
+.top-filters select {
+	height: 35px;
+	padding: 8px 12px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+}
+
+
+/* =========================
+   Main layout
+   ========================= */
+.layout {
+	display: flex;
+	gap: 20px;
+	padding: 25px;
+	flex: 1;
+}
+
+.column {
+	flex: 1;
+	min-width: 0;
+	padding: 18px;
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	border-radius: 12px;
+}
+
+.column-title {
+	margin-bottom: 18px;
+	font-size: 21px;
+	font-weight: bold;
+}
+
+/* =========================
+   Side panel
+   ========================= */
+.side-panel {
+	width: 210px;
+	flex-shrink: 0;
+	padding: 18px;
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 12px;
+}
+
+.side-title {
+	margin-bottom: 18px;
+	font-weight: bold;
+}
+
+.sort-btn {
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 10px 12px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	text-align: left;
+	cursor: pointer;
+}
+
+.sort-btn:hover {
+	background: #eaf6ea;
+}
+
+/* =========================
+   Project cards
+   ========================= */
+.project-cards {
+	max-height: 65vh;
+	overflow-y: auto;
+	padding-right: 5px;
+}
+
+.project-card {
+	margin-bottom: 12px;
+	padding: 16px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.project-card:hover {
+	border-color: #aaa;
+}
+
+.project-card a {
+	color: #222;
+	text-decoration: none;
+}
+
+.project-card-title {
+	margin-bottom: 7px;
+	font-size: 19px;
+	font-weight: bold;
+}
+
+.project-card-desc {
+	margin-top: 6px;
+	color: #666;
+	font-size: 14px;
+}
+
+.project-card-budg {
+	margin-top: 8px;
+	font-weight: bold;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.green-btn {
+	display: block;
+	width: 130px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px 12px;
+	border-radius: 8px;
+	text-align: center;
+	cursor: pointer;
+	background: #b9e8b9;
+	border: 1px solid #8bc58b;
+	color: #205520;
+	font-weight: bold;
+}
+
+.green-btn:hover {
+	background: #a8dca8;
+}
+
+.red-btn {
+	display: block;
+	width: 130px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px 12px;
+	border-radius: 8px;
+	text-align: center;
+	cursor: pointer;
+	background: #ff8080;
+	border: 1px solid #ff0000;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+}
+
+.red-btn:hover {
+	background: #ff0000;
+}
+
+.gray-btn {
+	width: 130px;
+	padding: 10px 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #888;
+	border-radius: 8px;
+	background: #e0e0e0;
+	color: #303030;
+	font-size: 14px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.gray-btn:hover {
+	background: #d2d2d2;
+}
+
+.back-btn {
+	display: inline-block;
+	width: 110px;
+	margin-top: 20px;
+	padding: 9px 14px;
+	border: 1px solid #888;
+	border-radius: 8px;
+	background: #e0e0e0;
+	color: #303030;
+	font-size: 14px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.back-btn:hover {
+	background: #d2d2d2;
+}
+
+/* =========================
+   Scrollbar
+   ========================= */
+.project-cards::-webkit-scrollbar {
+	width: 7px;
+}
+
+.project-cards::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 5px;
+}
+/* =========================
+   Application
+   ========================= */
+.application-container {
+	width: 600px;
+	margin: 30px auto;
+	padding: 25px;
+}
+
+.application-container h2 {
+	text-align: center;
+	margin: 0 0 20px 0;
+	font-size: 24px;
+}
+
+.application-container label {
+	display: block;
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+.application-container input[type="text"], .application-container textarea
+	{
+	width: 100%;
+	padding: 10px;
+	margin-top: 6px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background: #fff;
+	color: #303030;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+
+.application-container textarea {
+	height: 120px;
+	resize: vertical;
+}
+
+.application-container input[type="text"]:focus, .application-container textarea:focus
+	{
+	outline: none;
+	border-color: #888;
+}
+
+.application-status, .order-description {
+	margin-top: 20px;
+	padding-top: 15px;
+	border-top: 1px solid #ddd;
+}
+
+.order-description a {
+	color: #222;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.order-description a:hover {
+	text-decoration: underline;
+}
+
+.application-container .green-btn, .application-container .red-btn {
+	width: auto;
+	display: inline-block;
+	margin-right: 8px;
+	text-align: center;
+}
+
+.application-container .application-status {
+	display: inline-block;
+	margin-top: 25px;
+	padding: 10px 14px;
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+}
+
+.application-container .application-status label {
+	display: inline;
+	margin: 0;
+}
+
+.application-container .application-status label:first-child {
+	color: #777;
+	font-weight: normal;
+}
+
+.application-container .application-status label:last-child {
+	margin-left: 8px;
+	font-weight: bold;
+}
+
+.order-description {
+	margin-top: 20px;
+	padding: 15px;
+	background: #eeeeee;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.order-info-label {
+	margin-bottom: 5px;
+	color: #777;
+	font-size: 13px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.order-info-name {
+	margin-bottom: 4px;
+	color: #555;
+	font-size: 14px;
+}
+
+.order-description a {
+	color: #222;
+	font-size: 17px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.order-description a:hover {
+	text-decoration: underline;
+}
+
+.application-container .back-btn {
+	display: inline-block;
+	width: auto;
+}
+
+/* =========================
+   Profile
+   ========================= */
+.profile-container {
+	width: 600px;
+	margin: 30px auto;
+	padding: 25px;
+}
+
+.profile-container h2 {
+	text-align: center;
+	margin: 0 0 20px 0;
+	font-size: 24px;
+}
+
+.profile-container label {
+	display: block;
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+.profile-container input[type="text"], .profile-container input[type="email"],
+	.profile-container input[type="number"], .profile-container textarea {
+	width: 100%;
+	padding: 10px;
+	margin-top: 6px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background: #fff;
+	color: #303030;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+
+.profile-container input:focus, .profile-container textarea:focus {
+	outline: none;
+	border-color: #888;
+}
+
+.profile-container textarea {
+	height: 120px;
+	resize: vertical;
+}
+
+/* =========================
+   Client profile
+   ========================= */
+.profile-value {
+	display: block;
+	margin-top: 6px;
+	padding: 10px;
+	background: #f8f8f8;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+.profile-container details {
+	margin-top: 15px;
+	padding: 12px;
+	background: #eeeeee;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+}
+
+.profile-container summary {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.profile-container details label {
+	margin-top: 12px;
+}
+
+.profile-container {
+	min-height: auto;
+}
+
+/* =========================
+   Order details
+   ========================= */
+.order-container {
+	width: 650px;
+	margin: 30px auto;
+	padding: 25px;
+	min-height: auto;
+}
+
+.order-top-bar {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	margin-bottom: 20px;
+}
+
+.order-top-bar h2 {
+	margin: 0;
+	font-size: 24px;
+}
+
+.order-section {
+	margin-top: 18px;
+}
+
+.section-title {
+	margin-bottom: 6px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.value-block {
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	white-space: pre-line;
+	line-height: 1.4;
+}
+
+.order-actions {
+	display: flex;
+	gap: 10px;
+	margin-top: 25px;
+}
+
+.order-top-bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.order-top-bar .back-btn {
+	position: absolute;
+	left: 0;
+}
+
+.order-top-bar h2 {
+	margin: 0;
+	font-size: 24px;
+}

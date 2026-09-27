@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Profile</title>
+
+<link rel="stylesheet" th:href="@{/css/common.css}">
+
+</head>
+
+<body>
+
+	<div class="container profile-container">
+
+		<h2 th:text="#{freelancer.profile.title}"></h2>
+
+		<form th:if="${role == 'FREELANCER' or role == 'ADMIN'}"
+			th:action="@{/save-freelancer-profile}" method="post">
+
+			<label th:text="#{freelancer.profile.name}"></label> <input
+				type="text" id="name" name="name" th:value="${freelancer.name}">
+
+			<label th:text="#{freelancer.profile.experience}"></label> <input
+				type="number" step="0.1" id="experience" name="experience"
+				th:value="${freelancer.experience}"> <label
+				th:text="#{email}"></label> <input type="email" id="email"
+				name="email" th:value="${freelancer.email}"> <label
+				th:text="#{password}"></label> <input type="text" id="password"
+				name="password" th:value="${freelancer.password}"> <label
+				th:text="#{freelancer.profile.description}"></label>
+			<textarea th:text="${freelancer.description}" name="description"
+				id="description"></textarea>
+
+			<label th:text="#{freelancer.profile.portfolio}"></label>
+			<textarea th:text="${freelancer.portfolio}" name="portfolio"
+				id="portfolio"></textarea>
+
+			<button type="submit" class="green-btn"
+				th:text="#{freelancer.profile.save}"></button>
+
+		</form>
+
+
+		<div th:if="${role == 'CLIENT'}">
+
+			<label th:text="#{freelancer.profile.name}"></label> <input
+				type="text" id="name" th:readonly="${role == 'CLIENT'}"
+				th:value="${freelancer.name}"> <label
+				th:text="#{freelancer.profile.experience}"></label> <input
+				th:readonly="${role == 'CLIENT'}" type="number" step="0.1"
+				id="experience" name="experience"
+				th:value="${freelancer.experience}"> <label
+				th:text="#{freelancer.profile.description}"></label>
+			<textarea th:readonly="${role == 'CLIENT'}"
+				th:text="${freelancer.description}" id="description"></textarea>
+
+			<label th:text="#{freelancer.profile.portfolio}"></label>
+			<textarea th:readonly="${role == 'CLIENT'}"
+				th:text="${freelancer.portfolio}" name="portfolio" id="portfolio"></textarea>
+
+		</div>
+
+
+		<button class="back-btn" th:text="#{freelancer.profile.back}"
+			onclick="history.back()"></button>
+
+	</div>
+
+</body>
+
+</html>
