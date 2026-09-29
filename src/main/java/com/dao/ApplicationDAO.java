@@ -8,9 +8,9 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.RowMapper.ApplicationRowMapper;
-import com.RowMapper.FreelancerRowMapper;
 import com.model.Freelancer;
+import com.rowmapper.ApplicationRowMapper;
+import com.rowmapper.FreelancerRowMapper;
 import com.model.Application;
 
 @Repository

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Client main page</title>
 <link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/mainPage.css}">
 
 </head>
 
@@ -80,15 +81,15 @@
 
 				<div class="column-title" th:text="#{client.main.page.my.orders}"></div>
 
-				<div class="project-cards">
+				<div class="cards">
 
-					<div th:each="order : ${order}" class="project-card">
+					<div th:each="order : ${order}" class="card">
 						<a th:href="@{/order/{id}(id=${order.id})}">
-							<div class="project-card-title" th:text="${order.name}"></div>
+							<div class="card-title" th:text="${order.name}"></div>
 
-							<div class="project-card-desc" th:text="${order.description}"></div>
+							<div class="card-desc" th:text="${order.description}"></div>
 
-							<div class="project-card-budg"
+							<div class="card-budg"
 								th:text="#{client.main.page.my.orders.budget} + ${order.budget} + ' ' + #{currency}">
 							</div>
 

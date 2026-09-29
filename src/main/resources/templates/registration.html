@@ -6,23 +6,14 @@
 <title>Registration</title>
 <link rel="stylesheet" th:href="@{/css/auth.css}">
 </head>
-<style>
-.register-container {
-	width: 420px;
-	margin: 80px auto;
-	padding: 28px 30px;
-	background: #fff;
-	border-radius: 14px;
-	box-shadow: 0 2px 10px #ccc;
-}
-</style>
+
 <body>
 
-	<div class="register-container">
+	<div class="auth-container">
 
 		<div class="logo" th:text="#{freelancer.exchange}"></div>
 
-		<div class="register-title" th:text="#{registration.title}"></div>
+		<div class="title" th:text="#{registration.title}"></div>
 
 		<form th:action="@{/register}" method="post">
 
@@ -65,7 +56,7 @@
 				</select>
 			</div>
 
-			<button class="register-btn" type="submit"
+			<button class="apply-btn" type="submit"
 				th:text="#{registration.register}"></button>
 
 			<div class="helper-link" onclick="location.href='/login'"

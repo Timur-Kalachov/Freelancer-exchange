@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import com.model.Category;
-import com.RowMapper.CategoryRowMapper;
+import com.rowmapper.CategoryRowMapper;
 
 @Repository
 public class CategoryDAO {

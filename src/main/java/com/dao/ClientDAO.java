@@ -7,9 +7,9 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.RowMapper.ClientRowMapper;
 import com.model.Client;
 import com.model.Freelancer;
+import com.rowmapper.ClientRowMapper;
 
 import jakarta.servlet.http.HttpSession;
 

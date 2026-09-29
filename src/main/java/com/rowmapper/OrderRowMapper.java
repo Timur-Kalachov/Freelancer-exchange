@@ -1,4 +1,4 @@
-package com.RowMapper;
+package com.rowmapper;
 
 import java.sql.Date;
 import java.sql.ResultSet;

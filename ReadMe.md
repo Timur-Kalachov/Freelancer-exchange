@@ -14,6 +14,10 @@ This is my first large-scale Java project. During development, I focused primari
 
 Some technologies and tools used in the project were also learned during development, so certain parts of the application may require further refactoring.
 
+A short walkthrough of the main application workflow:
+
+![Application demo](videos/walkthrought.mp4)
+
 ### Client Main Page
 
 ![Client Main Page](images/client-main-page.png)

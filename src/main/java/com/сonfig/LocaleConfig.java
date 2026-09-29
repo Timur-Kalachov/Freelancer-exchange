@@ -1,4 +1,4 @@
-package com.Config;
+package com.сonfig;
 
 import java.util.Locale;
 

@@ -4,152 +4,64 @@
 <meta charset="UTF-8">
 <title>Edit order</title>
 <link rel="stylesheet" th:href="@{/css/common.css}">
-<style>
+<link rel="stylesheet" th:href="@{/css/order.css}">
 
-.container select {
-	height: 35px;
-	margin-top: 6px;
-	padding: 8px 12px;
-	background: #fff;
-	border: 1px solid #888;
-	border-radius: 8px;
-}
-
-
-.top-bar {
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-}
-
-.back-btn {
-	padding: 9px 14px;
-	border: 1px solid #888;
-	border-radius: 8px;
-	background: #e0e0e0;
-	color: #303030;
-	font-size: 14px;
-	cursor: pointer;
-	margin-right: 18px;
-}
-
-.back-btn:hover {
-	background: #d2d2d2;
-}
-
-h2 {
-	margin: 0;
-	font-size: 24px;
-}
-
-.section-title,
-label {
-	display: block;
-	margin-top: 18px;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-input[type="text"],
-input[type="date"],
-textarea,
-search {
-	width: 100%;
-	margin-top: 6px;
-	padding: 10px;
-	box-sizing: border-box;
-	border: 1px solid #888;
-	border-radius: 8px;
-	background: #ffffff;
-	color: #303030;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus,
-textarea:focus,
-search:focus {
-	outline: none;
-	border-color: #5c9f60;
-}
-
-textarea {
-	height: 120px;
-	resize: vertical;
-}
-
-search {
-	cursor: pointer;
-}
-
-.btn-apply {
-	display: block;
-	width: 100%;
-	margin-top: 25px;
-	padding: 11px;
-	box-sizing: border-box;
-	background: #b8e8b8;
-	border: 1px solid #5c9f60;
-	border-radius: 8px;
-	color: #245b28;
-	font-size: 15px;
-	font-weight: bold;
-	cursor: pointer;
-	text-align: center;
-}
-
-.btn-apply:hover {
-	background: #a8dca8;
-}
-</style>
 </head>
 <body>
-	
+
 	<div class="container order-container">
-	
-		<div class="top-bar">
-			<div class="back-btn" onclick="history.back()">
-				  <span th:text="#{order.back}"></span>
-			</div>
+
+		<div class="order-top-bar">
+			<button class="back-btn" onclick="history.back()"
+				th:text="#{order.back}"></button>
 			<h2 th:text="#{order.details.title}"></h2>
 		</div>
-		
+
 		<form th:action="@{/order/{id}/edit (id=${order.id})}" method="post">
 		
-			<div class="section-title"
-				th:text="#{order.name}">
-			</div>	
-			
-			<input required type="text"  name="name" th:value="${order.name}" class="value-block"> 
-			
-			<label th:text="#{create.order.category}"></label>
-			
-			<select required name="categoryId">
-				<option th:each="category : ${categories}" th:selected="${category.id == currentCategory.id}" th:value="${category.id}" th:text="${category.name}"></option>
-			</select>
-			
-			
-			<div class="section-title"
-				 th:text="#{order.description}">
-			</div>
-			
-			<textarea required type="text" name="description" th:text="${order.description}" class="value-block"></textarea>
-			
-			<div class="section-title"
-				th:text="#{order.budget}">
-			</div>
-			
-			<input required type="text" name="budget" th:value="${order.budget}" class="value-block"> 
-			
-			<div class="section-title"
-				th:text="#{order.deadline}">
-			</div>
-			
-			<input required type="date" name="deadline" th:value="${order.deadline}" class="value-block">
+			<div class="order-section">
+				<label class="section-title" th:text="#{order.name}"></label>
+				
+				<input required type="text" name="name" th:value="${order.name}"
+					class="value-block">
 
-			<button type="submit" th:text="#{save}" class="btn-apply">
+			</div>
 			
+			<div class="order-section">
+				<label class="section-title" th:text="#{create.order.category}"></label>
+
+				<select class="value-block" required name="categoryId">
+					<option th:each="category : ${categories}"
+						th:selected="${category.id == currentCategory.id}"
+						th:value="${category.id}" th:text="${category.name}"></option>
+				</select>
+			</div>
+
+
+			<div class="order-section">
+				<label class="section-title" th:text="#{order.description}"></label>
+				
+				<textarea class="value-block" required type="text" name="description"
+					th:text="${order.description}" ></textarea>
+			</div>
+
+
+			<div class="order-section">
+				<label class="section-title" th:text="#{order.budget}"></label>
+				
+				<input required type="text" name="budget" th:value="${order.budget}"
+					class="value-block">
+			</div>
+
+
+			<div class="order-section">
+				<label class="section-title" th:text="#{order.deadline}"></label>
+				
+				<input required type="date" name="deadline"
+					th:value="${order.deadline}" class="value-block">
+			</div>
+
+			<button type="submit" th:text="#{save}" class="green-btn">
 		</form>
 
 

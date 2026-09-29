@@ -7,10 +7,10 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.RowMapper.FreelancerRowMapper;
-import com.RowMapper.OrderRowMapper;
 import com.model.Freelancer;
 import com.model.Order;
+import com.rowmapper.FreelancerRowMapper;
+import com.rowmapper.OrderRowMapper;
 
 @Repository
 public class OrderDAO {
@@ -40,10 +40,6 @@ public class OrderDAO {
 			sql += " ORDER BY budget DESC";
 		} else if (sort.equals("budgetDown")) {
 			sql += " ORDER BY budget ASC";
-		} else if (sort.equals("dateUp")) {
-			sql += " ORDER BY order_id ASC";
-		} else if (sort.equals("category_up")) {
-			sql += " ORDER BY order_id ASC";
 		} else if (sort.equals("dateUp")) {
 			sql += " ORDER BY order_id ASC";
 		} else {

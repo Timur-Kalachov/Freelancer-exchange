@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Freelancer main page</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"
-	rel="stylesheet">
 <link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/mainPage.css}">
 
 </head>
 <body>
 	<div class="container">
 
 		<header>
-			<div class="logo" th:text="#{freelancer.main.logo}"></div>
+			<div class="logo" th:text="#{freelancer.exchange}"></div>
 
 			<div class="search-bar">
-				<input type="text"
-					th:placeholder="#{freelancer.main.search.placeholder}">
+				<input type="text" th:placeholder="#{search.placeholder}">
 			</div>
 
 			<div class="user-panel">
@@ -90,17 +87,17 @@
 			<div class="column">
 
 				<div class="column-title" th:text="#{freelancer.main.page.orders}"></div>
-				<div class="project-cards">
-					<div th:each="order : ${orders}" class="project-card">
+				<div class="cards">
+					<div th:each="order : ${orders}" class="card">
 						<a th:href="@{/order/{id}(id=${order.id})}">
 
-							<div class="project-card-title" th:text="${order.name}"></div>
+							<div class="card-title" th:text="${order.name}"></div>
 
-							<div class="project-card-budget"
+							<div class="card-budget"
 								th:text="${order.budget }+ ' ' + #{currency}"></div>
 
 
-							<div class="project-card-desc" th:text="${order.description}"></div>
+							<div class="card-desc" th:text="${order.description}"></div>
 
 						</a>
 

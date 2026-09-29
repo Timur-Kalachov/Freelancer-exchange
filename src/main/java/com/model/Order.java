@@ -20,10 +20,6 @@ public class Order {
 
 	private OrderStatus status;
 
-	private Client client;
-
-
-	private List<Application> applications;
 
 	public Order() {
 	}
@@ -76,19 +72,4 @@ public class Order {
 		this.status = status;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public List<Application> getApplications() {
-		return applications;
-	}
-
-	public void setApplications(List<Application> applications) {
-		this.applications = applications;
-	}
 }

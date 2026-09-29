@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 
 <title>Order Details</title>
-
 <link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/order.css}">
 
 </head>
 
@@ -25,7 +25,7 @@
 
 		<div class="order-section">
 
-			<div class="section-title" th:text="#{order.title}"></div>
+			<label class="section-title" th:text="#{order.title}"></label>
 
 			<div class="value-block" th:text="${order.name}"></div>
 
@@ -33,7 +33,7 @@
 		
 		<div class="order-section">
 
-			<div class="section-title" th:text="#{create.order.category}"></div>
+			<label class="section-title" th:text="#{create.order.category}"></label>
 
 			<div class="value-block" th:text="${category.name}"></div>
 
@@ -41,7 +41,7 @@
 
 		<div class="order-section">
 
-			<div class="section-title" th:text="#{order.description}"></div>
+			<label class="section-title" th:text="#{order.description}"></label>
 
 			<div class="value-block" th:text="${order.description}"></div>
 
@@ -50,7 +50,7 @@
 
 		<div class="order-section">
 
-			<div class="section-title" th:text="#{order.budget}"></div>
+			<label class="section-title" th:text="#{order.budget}"></label>
 
 			<div class="value-block">
 
@@ -64,7 +64,7 @@
 
 		<div class="order-section">
 
-			<div class="section-title" th:text="#{order.deadline}"></div>
+			<label class="section-title" th:text="#{order.deadline}"></label>
 
 			<div class="value-block" th:text="${order.deadline}"></div>
 

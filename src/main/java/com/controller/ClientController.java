@@ -59,7 +59,7 @@ public class ClientController {
 		int companyId=clientService.getClient(clientId).getCompanyId();
 		Company company=new Company(companyId,companyName,companyDescription);
 		companyService.save(company);
-		c.setCompanyId(companyService.find(company).getId());
+		c.setCompanyId(company.getId());
 		clientService.save(c, session);
 		if(session.getAttribute("role").equals("ADMIN")) {
 			return "redirect:/admin";

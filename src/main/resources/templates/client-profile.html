@@ -9,97 +9,92 @@
 <title>Profile</title>
 
 <link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/profile.css}">
 
 </head>
 
 <body>
 
-<div class="container profile-container">
+	<div class="container profile-container">
 
-	<h2 th:text="#{client.profile.title}"></h2>
+		<h2 th:text="#{client.profile.title}"></h2>
 
-	<form th:if="${role == 'CLIENT' or role == 'ADMIN'}"
-		th:action="@{/save-client-profile}" method="post">
+		<form th:if="${role == 'CLIENT' or role == 'ADMIN'}"
+			th:action="@{/save-client-profile}" method="post">
 
-		<label th:text="#{client.profile.name}"></label>
-		<input type="text" id="name" name="name"
-			th:value="${client.name}">
+			<label th:text="#{client.profile.name}"></label>
+			<input type="text" id="name" name="name" th:value="${client.name}">
 
-		<label th:text="#{email}"></label>
-		<input type="email" id="email" name="email"
-			th:value="${client.email}">
+			<label th:text="#{email}"></label>
+			<input type="email" id="email" name="email"
+				th:value="${client.email}">
 
-		<label th:text="#{password}"></label>
-		<input type="text" id="password" name="password"
-			th:value="${client.password}">
+			<label th:text="#{password}"></label>
+			<input type="text" id="password" name="password"
+				th:value="${client.password}">
 
-		<label th:text="#{client.profile.description}"></label>
-		<textarea th:text="${client.description}"
-			name="description" id="description"></textarea>
+			<label th:text="#{client.profile.description}"></label>
+			<textarea th:text="${client.description}" name="description"
+				id="description"></textarea>
 
-		<label th:text="#{client.profile.company}"></label>
+			<label th:text="#{client.profile.company}"></label>
 
-		<details>
+			<details>
 
-			<summary th:text="#{client.profile.company.edit}"></summary>
+				<summary th:text="#{client.profile.company.edit}"></summary>
 
-			<label th:text="#{client.profile.company.name}"></label>
-			<input type="text" id="company-name" name="companyName"
-				th:value="${company != null ? company.name : ''}">
+				<label th:text="#{client.profile.company.name}"></label>
+				<input type="text" id="company-name" name="companyName"
+					th:value="${company != null ? company.name : ''}">
 
-			<label th:text="#{client.profile.company.description}"></label>
-			<textarea name="companyDescription"
-				id="company-description"
-				th:text="${company != null ? company.description : ''}">
+				<label th:text="#{client.profile.company.description}"></label>
+				<textarea name="companyDescription" id="company-description"
+					th:text="${company != null ? company.description : ''}">
 			</textarea>
 
-		</details>
+			</details>
 
-		<button type="submit" class="green-btn"
-			th:text="#{client.profile.save}"></button>
+			<button type="submit" class="green-btn"
+				th:text="#{client.profile.save}"></button>
 
-	</form>
+		</form>
 
 
-	<div th:if="${role == 'FREELANCER'}">
+		<div th:if="${role == 'FREELANCER'}">
 
-		<label th:text="#{client.profile.name}"></label>
-		<span class="profile-value"
-			th:text="${client.name}"></span>
+			<label th:text="#{client.profile.name}"></label>
+			<span class="profile-value" th:text="${client.name}"></span>
 
-		<label th:text="#{email}"></label>
-		<span class="profile-value"
-			th:text="${client.email}"></span>
+			<label th:text="#{email}"></label>
+			<span class="profile-value" th:text="${client.email}"></span>
 
-		<label th:text="#{client.profile.description}"></label>
-		<textarea readonly th:text="${client.description}"
-			id="description"></textarea>
+			<label th:text="#{client.profile.description}"></label>
+			<textarea readonly th:text="${client.description}" id="description"></textarea>
 
-		<label th:text="#{client.profile.company}"></label>
+			<label th:text="#{client.profile.company}"></label>
 
-		<details>
+			<details>
 
-			<summary th:text="#{client.profile.company.edit}"></summary>
+				<summary th:text="#{client.profile.company.edit}"></summary>
 
-			<label th:text="#{client.profile.company.name}"></label>
-			<input type="text" readonly
-				th:value="#{client.profile.company.default.name}">
+				<label th:text="#{client.profile.company.name}"></label>
+				<input type="text" readonly
+					th:value="#{client.profile.company.default.name}">
 
-			<label th:text="#{client.profile.company.description}"></label>
-			<textarea readonly
-				th:text="#{client.profile.company.default.description}">
+				<label th:text="#{client.profile.company.description}"></label>
+				<textarea readonly
+					th:text="#{client.profile.company.default.description}">
 			</textarea>
 
-		</details>
+			</details>
+
+		</div>
+
+
+		<button class="gray-btn" th:text="#{freelancer.profile.back}"
+			onclick="history.back()"></button>
 
 	</div>
-
-
-	<button class="gray-btn"
-		th:text="#{freelancer.profile.back}"
-		onclick="history.back()"></button>
-
-</div>
 
 </body>
 

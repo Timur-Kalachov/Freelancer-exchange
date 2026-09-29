@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Applications</title>
 <link rel="stylesheet" th:href="@{/css/common.css}">
+<link rel="stylesheet" th:href="@{/css/mainPage.css}">
 </head>
 
 <body>
@@ -32,7 +33,7 @@
 				<option th:each="category : ${categories}" th:value="${categoryId}"
 					th:text="${category.name}"></option>
 			</select>
-	
+
 		</div>
 
 		<div class="layout">
@@ -73,19 +74,19 @@
 				<div class="column-title"
 					th:text="#{client.main.page.applications.on.orders}"></div>
 
-				<div class="project-cards">
+				<div class="cards">
 
-					<div th:each="appl : ${appls}" class="project-card">
+					<div th:each="appl : ${appls}" class="card">
 
-						<a th:href="@{/application/{id} (id=${appl.id})}"> <!-- Rename project-card-... into  card-...  -->
+						<a th:href="@{/application/{id} (id=${appl.id})}">
 
-							<div class="project-card-title"
+							<div class="card-title"
 								th:text="${freelancers[appl.freelancerId].name}"></div>
 
-							<div class="project-card-desc"
+							<div class="card-desc"
 								th:text="${freelancers[appl.freelancerId].description}"></div>
 
-							<div class="project-card-desc"
+							<div class="card-desc"
 								th:text="${freelancers[appl.freelancerId].experience} + ' ' + #{years}"></div>
 
 							<div class="application-status">
@@ -104,20 +105,17 @@
 			<div class="column" th:if="${role == 'FREELANCER'}">
 				<div class="column-title" th:text="#{freelancer.applications.title}"></div>
 
-				<div class="project-cards">
+				<div class="cards">
 
-					<div th:each="appl : ${appls}" class="project-card">
+					<div th:each="appl : ${appls}" class="card">
 
-						<a th:href="@{/application/{id} (id=${appl.id})}"> <!-- Rename project-card-... into  card-...  -->
+						<a th:href="@{/application/{id} (id=${appl.id})}">
+							<div class="card-title" th:text="${orders[appl.orderId].name}"></div>
 
-							<div class="project-card-title"
-								th:text="${orders[appl.orderId].name}"></div>
-
-							<div class="project-card-desc"
+							<div class="card-desc"
 								th:text="${orders[appl.orderId].description}"></div>
 
-							<div class="project-card-desc"
-								th:text="${orders[appl.orderId].budget} "></div>
+							<div class="card-desc" th:text="${orders[appl.orderId].budget} "></div>
 
 							<div class="application-status">
 								<label th:text="#{application.status}"></label>

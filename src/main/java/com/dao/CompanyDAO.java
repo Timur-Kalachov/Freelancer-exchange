@@ -9,8 +9,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.RowMapper.CompanyRowMapper;
 import com.model.Company;
+import com.rowmapper.CompanyRowMapper;
 
 @Repository
 public class CompanyDAO {
