@@ -10,6 +10,10 @@ import com.dao.OrderDAO;
 import com.dao.ApplicationDAO;
 import com.dao.ClientDAO;
 import com.model.Order;
+
+import exception.OrderNotFoundException;
+import exception.UserNotFoundException;
+
 import com.model.Client;
 import jakarta.servlet.http.HttpSession;
 
@@ -31,7 +35,7 @@ public class OrderService {
 
 	public Order findById(int id) {
 
-		return orderDAO.findById(id).orElseThrow(() -> new RuntimeException("Order not found"));
+		return orderDAO.findById(id).orElseThrow(() -> new OrderNotFoundException(id));
 	}
 
 	public Map<Integer, Order> createOrdersMap(List<Order> orders) {
@@ -47,7 +51,7 @@ public class OrderService {
 
 		Client client = clientDAO
 				.find(session.getAttribute("userEmail").toString(), session.getAttribute("password").toString())
-				.orElseThrow(() -> new RuntimeException("User not found"));
+				.orElseThrow(() -> new UserNotFoundException(session.getAttribute("userEmail").toString(),session.getAttribute("password").toString()));
 		LocalDate date = LocalDate.now();
 		orderDAO.save(name, description, budget, deadline, String.valueOf(client.getId()), categoryId, "Open",
 				date.toString());// add real status
@@ -57,7 +61,7 @@ public class OrderService {
 	public List<Order> findAllByClient(Client client, String sort) {
 
 		Client c = clientDAO.find(client.getEmail(), client.getPassword())
-				.orElseThrow(() -> new RuntimeException("Order not found"));
+				.orElseThrow(() -> new UserNotFoundException(client.getEmail(),client.getPassword()));
 
 		List<Order> orders = orderDAO.findAllByClient(c.getId(), sort);
 		return orders;
@@ -66,7 +70,7 @@ public class OrderService {
 	public void deleteById(int id, HttpSession session) {
 		Client c = clientDAO
 				.find(session.getAttribute("userEmail").toString(), session.getAttribute("password").toString())
-				.orElseThrow(() -> new RuntimeException("User not found"));
+				.orElseThrow(() -> new UserNotFoundException(session.getAttribute("userEmail").toString(),session.getAttribute("password").toString()));
 		applicationDAO.deleteByOrderId(id);
 		orderDAO.deleteById(id, c.getId());
 	}
@@ -74,7 +78,7 @@ public class OrderService {
 	public void updateById(int id, String name, String description, String budget, String deadline,
 			int category_category_id, String status, HttpSession session) {
 		clientDAO.find(session.getAttribute("userEmail").toString(), session.getAttribute("password").toString())
-				.orElseThrow(() -> new RuntimeException("User not found"));
+				.orElseThrow(() -> new UserNotFoundException(session.getAttribute("userEmail").toString(),session.getAttribute("password").toString()));
 		orderDAO.update(id, name, description, budget, deadline, category_category_id, status);
 	}
 

@@ -3,15 +3,47 @@ package com.controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import exception.UserNotFoundException;
+import exception.AccessDeniedException;
+import exception.OrderNotFoundException;
 
 @ControllerAdvice
 public class ErrorController {
 
 	@ExceptionHandler(Exception.class)
 	public String handleException(Exception exception, Model model) {
+		model.addAttribute("errorCode", "500");
+		model.addAttribute("errorMessage", ("Something went wrong"));
+		exception.printStackTrace();
 
+		return "error.html";
+	}
+	
+	@ExceptionHandler(UserNotFoundException.class)
+	public String handleUserNotFoundException(Exception exception, Model model) {
+
+		model.addAttribute("errorCode", "404");
 		model.addAttribute("errorMessage", exception.getMessage());
-		model.addAttribute("errorType", exception.getClass().getSimpleName());
+		exception.printStackTrace();
+
+		return "error.html";
+	}
+	
+	@ExceptionHandler(AccessDeniedException.class)
+	public String handleAccessDeniedException(Exception exception, Model model) {
+
+		model.addAttribute("errorCode", "403");
+		model.addAttribute("errorMessage", exception.getMessage());
+		exception.printStackTrace();
+
+		return "error.html";
+	}
+	
+	@ExceptionHandler(OrderNotFoundException.class)
+	public String handleOrderNotFoundException(Exception exception, Model model) {
+
+		model.addAttribute("errorCode", "404");
+		model.addAttribute("errorMessage", exception.getMessage());
 		exception.printStackTrace();
 
 		return "error.html";

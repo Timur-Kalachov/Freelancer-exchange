@@ -9,6 +9,9 @@ import com.dao.FreelancerDAO;
 import com.dao.ClientDAO;
 import com.dao.ApplicationDAO;
 import com.model.Freelancer;
+
+import exception.UserNotFoundException;
+
 import com.model.Application;
 import jakarta.servlet.http.HttpSession;
 
@@ -28,7 +31,7 @@ ApplicationService {
 	public void createApplication(int orderId, HttpSession session) {
 		Freelancer f = freelancerDAO
 				.find(session.getAttribute("userEmail").toString(), session.getAttribute("password").toString())
-				.orElseThrow(() -> new RuntimeException("Freelancer not found"));
+				.orElseThrow(() -> new UserNotFoundException(session.getAttribute("userEmail").toString(), session.getAttribute("password").toString()));
 		if (applicationDAO.findApplication(orderId, f.getId()).isEmpty()) {
 			applicationDAO.create(orderId, f.getId());
 		}

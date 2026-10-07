@@ -4,14 +4,35 @@
 <meta charset="UTF-8">
 <title>Error page</title>
 <style>
+.errorCode {
+	font-size: 64px;
+	font-weight: bold;
+}
+
+.errorType{
+	font-size: 24px;
+}
+
+.errorMessage{
+	font-size: 24px;
+}
+
+.container {
+	margin-top:40px;
+	margin-left:40px; 
+	display: flex;
+	flex-direction: column;
+}
+
 
 </style>
 </head>
 <body>
-	
+
 	<div class="container">
-		<div class="errorType" th:text="${errorType}"></div>
-		<div class="errorMessage" th:text="${errorMessage}"
+		<label class="errorCode" th:text="${errorCode}"></label>
+		<label class="errorMessage" th:text="${errorMessage}"></label>
+		<label class="errorType" th:text="${errorType}"></label>
 	</div>
 
 </body>

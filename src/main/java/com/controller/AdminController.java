@@ -10,6 +10,7 @@ import com.service.ClientService;
 import com.service.FreelancerService;
 import com.service.OrderService;
 
+import exception.AccessDeniedException;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -29,7 +30,7 @@ public class AdminController {
 	public String showAdminPanelPage(@RequestParam(required = false) String password,HttpSession session,Model model) {
 		String adminPassword="i87q34ft67ieylvfhujtu874yr43wy7u8";
 		if(!adminPassword.equals(password) && !session.getAttribute("role").equals("ADMIN")) {
-			throw new RuntimeException("Tried to access admin page with wrong password!");
+			throw new AccessDeniedException( session.getAttribute("role").toString(),session.getAttribute("userEmail").toString());
 		}
 		session.setAttribute("password", adminPassword);
 		model.addAttribute("clients",clientService.getAllClients());

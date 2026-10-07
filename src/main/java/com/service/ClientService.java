@@ -11,6 +11,8 @@ import com.model.Client;
 import com.model.Company;
 import com.model.Freelancer;
 
+import exception.AccessDeniedException;
+import exception.UserNotFoundException;
 import jakarta.servlet.http.HttpSession;
 
 @Service
@@ -32,7 +34,7 @@ public class ClientService {
 	public Client getClient(String email,String password) {
 		Client c = clientDAO
 				.find(email, password)
-				.orElseThrow(() -> new RuntimeException("User not found"));
+				.orElseThrow(() -> new UserNotFoundException(email,password));
 		if (c.getDescription() == null) {
 			c.setDescription("No description");
 		}
@@ -51,12 +53,12 @@ public class ClientService {
 			session.setAttribute("userEmail", client.getEmail());
 			session.setAttribute("password", client.getPassword());
 		} else {
-			throw new RuntimeException("Wrong role, no changes allowed");
+			throw new AccessDeniedException( session.getAttribute("role").toString(),session.getAttribute("userEmail").toString());
 		}
 	}
 
 	public Client getClient(int id) {
-		Client c = clientDAO.find(id).orElseThrow(() -> new RuntimeException("User not found"));
+		Client c = clientDAO.find(id).orElseThrow(() -> new UserNotFoundException(id));
 		if (c.getDescription() == null) {
 			c.setDescription("-");
 		}

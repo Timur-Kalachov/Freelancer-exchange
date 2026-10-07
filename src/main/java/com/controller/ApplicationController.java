@@ -17,6 +17,8 @@ import com.service.CategoryService;
 import com.service.ClientService;
 import com.service.FreelancerService;
 import com.service.OrderService;
+
+import exception.AccessDeniedException;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -59,7 +61,7 @@ public class ApplicationController {
 		}  else if(userRole.equals("ADMIN")) {
 			//TODO  add admin access
 		} else {
-			throw new IllegalArgumentException("Wrong role: "+userRole);
+			throw new AccessDeniedException(userRole,session.getAttribute("userEmail").toString());
 		}
 		
 		return "applications.html";
@@ -79,7 +81,7 @@ public class ApplicationController {
 		} else if(userRole.equals("ADMIN")) {
 			//TODO  add admin access
 		} else {
-			throw new IllegalArgumentException("Wrong role: "+userRole);
+			throw new AccessDeniedException(userRole,session.getAttribute("userEmail").toString());
 		}
 		return "applications.html";
 	}

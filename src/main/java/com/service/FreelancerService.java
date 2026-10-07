@@ -9,6 +9,8 @@ import com.dao.FreelancerDAO;
 import com.model.Client;
 import com.model.Freelancer;
 
+import exception.AccessDeniedException;
+import exception.UserNotFoundException;
 import jakarta.servlet.http.HttpSession;
 
 @Service
@@ -22,7 +24,7 @@ public class FreelancerService {
 	public Freelancer getFreelancer(String email, String password) {
 		Freelancer f = freelancerDAO
 				.find(email, password)
-				.orElseThrow(() -> new RuntimeException("User not found"));
+				.orElseThrow(() -> new UserNotFoundException(email,password));
 		if (f.getDescription() == null) {
 			f.setDescription("-");
 		}
@@ -48,13 +50,13 @@ public class FreelancerService {
 			session.setAttribute("userEmail", freelancer.getEmail());
 			session.setAttribute("password", freelancer.getPassword());
 		} else {
-			 throw new RuntimeException("Wrong role, no changes allowed");
+			 throw new AccessDeniedException(role,session.getAttribute("userEmail").toString());
 		}
 
 	}
 
 	public Freelancer getFreelancerById(int id) {
-		Freelancer f = freelancerDAO.find(id).orElseThrow(() -> new RuntimeException("User not found"));
+		Freelancer f = freelancerDAO.find(id).orElseThrow(() -> new UserNotFoundException(id));
 		return f;
 	}
 
@@ -64,7 +66,7 @@ public class FreelancerService {
 	}
 
 	public Freelancer getFreelancer(int id) {
-		Freelancer f = freelancerDAO.find(id).orElseThrow(() -> new RuntimeException("User not found"));
+		Freelancer f = freelancerDAO.find(id).orElseThrow(() -> new UserNotFoundException(id));
 		if (f.getDescription() == null) {
 			f.setDescription("No description");
 		}

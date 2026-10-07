@@ -3,6 +3,9 @@ package com.service;
 import org.springframework.stereotype.Service;
 
 import com.dao.FreelancerDAO;
+
+import exception.AccessDeniedException;
+
 import com.dao.ClientDAO;
 
 @Service
@@ -29,7 +32,7 @@ public class AuthorisationService {
 				status = LoginStatus.F_SUCCESS;
 			}
 		} else {
-			throw new IllegalArgumentException("Wrong role!");
+			throw new AccessDeniedException( role,email);
 		}
 		return status;
 	}

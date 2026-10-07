@@ -28,12 +28,7 @@ public class RegistrationService {
 	}
 	
 	
-	public RegistrationStatus register(String name, String email, String password, String role) {
-		 if(name.isBlank() || password.isBlank()) {
-			 throw new IllegalArgumentException("!");
-		 }
-		 
-		
+	public RegistrationStatus register(String name, String email, String password, String role) {		
 		 if(role.equals("CLIENT")) {
 			 Client c =new Client();
 			 c.setName(name);
