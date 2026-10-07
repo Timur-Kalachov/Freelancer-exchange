@@ -18,7 +18,7 @@ import com.service.ClientService;
 import com.service.FreelancerService;
 import com.service.OrderService;
 
-import exception.AccessDeniedException;
+import com.exception.AccessDeniedException;
 import jakarta.servlet.http.HttpSession;
 
 @Controller

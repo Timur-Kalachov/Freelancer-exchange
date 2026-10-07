@@ -10,7 +10,7 @@ import com.dao.ClientDAO;
 import com.dao.ApplicationDAO;
 import com.model.Freelancer;
 
-import exception.UserNotFoundException;
+import com.exception.UserNotFoundException;
 
 import com.model.Application;
 import jakarta.servlet.http.HttpSession;

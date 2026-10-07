@@ -3,9 +3,9 @@ package com.controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import exception.UserNotFoundException;
-import exception.AccessDeniedException;
-import exception.OrderNotFoundException;
+import com.exception.UserNotFoundException;
+import com.exception.AccessDeniedException;
+import com.exception.OrderNotFoundException;
 
 @ControllerAdvice
 public class ErrorController {

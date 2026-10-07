@@ -11,8 +11,8 @@ import com.dao.ApplicationDAO;
 import com.dao.ClientDAO;
 import com.model.Order;
 
-import exception.OrderNotFoundException;
-import exception.UserNotFoundException;
+import com.exception.OrderNotFoundException;
+import com.exception.UserNotFoundException;
 
 import com.model.Client;
 import jakarta.servlet.http.HttpSession;

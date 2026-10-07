@@ -9,8 +9,8 @@ import com.dao.FreelancerDAO;
 import com.model.Client;
 import com.model.Freelancer;
 
-import exception.AccessDeniedException;
-import exception.UserNotFoundException;
+import com.exception.AccessDeniedException;
+import com.exception.UserNotFoundException;
 import jakarta.servlet.http.HttpSession;
 
 @Service

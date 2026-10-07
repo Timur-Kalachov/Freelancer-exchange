@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.dao.FreelancerDAO;
 
-import exception.AccessDeniedException;
+import com.exception.AccessDeniedException;
 
 import com.dao.ClientDAO;
 
